@@ -5,14 +5,15 @@ import { Route, Routes } from 'react-router-dom'
 import Register from './Pages/Auth/Register'
 import Login from './Pages/Auth/Login'
 import User from './Pages/User'
-
+import {  ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   
 
   return (
     <>
-    
+       <ToastContainer />
        <Routes>
       <Route exact path='/' element={<Home />} />
       <Route path='/register' element={<Register />} />
