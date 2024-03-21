@@ -6,7 +6,7 @@ function Hero() {
   return (
     <div className="container-fluid hero pt-3">
       <Navbar />
-      <div className="row mt-md-5  heroRow">
+      <div className="row mt-md-5  heroRow justify-content-center align-items-center">
         <div className="col-md-6 pt-5">
           <div className="d-flex flex-column pt-3 ps-md-5">
             <h3 className=" text-white  her0Bold">Send Secret</h3>
@@ -16,13 +16,13 @@ function Hero() {
           <p className=" text-white ps-md-5 ">
             Robonymous is an interactive anonymous messaging app with a dare
             game. Create your Profile Link and Send it to all your contacts to
-            check what do your friends think about you. With the help of Kubool,
+            check what do your friends think about you. With our help,
             you can send and recieve anonymous compliments easily for free!
           </p>
           <button className="hBtn ms-md-5 mb-5 fw-bold"><Link to='/register'>Get Started</Link></button>
         </div>
         <div className="col-md-6">
-          <img src={her0} alt="" className="img-fluid" />
+          <img src={her0} className="img-fluid" />
         </div>
       </div>
     </div>

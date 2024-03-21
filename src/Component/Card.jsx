@@ -5,8 +5,8 @@ function Card() {
   return (
     <div className="container">
       <div className="row mt-5 g-5">
-        <div className="col-md-3 mb-md-5">
-          <div className="card">
+        <div className="col-md-6 mb-md-5">
+          <div className="card shadow rounded">
             <div className="card-body">
               <h5 className="card-title">
                 <FontAwesomeIcon
@@ -24,8 +24,8 @@ function Card() {
             </div>
           </div>
         </div>
-        <div className="col-md-3 mb-md-5">
-          <div className="card">
+        <div className="col-md-6 mb-md-5">
+          <div className="card shadow rounded">
             <div className="card-body">
               <h5 className="card-title">
                 <FontAwesomeIcon
@@ -43,8 +43,8 @@ function Card() {
             </div>
           </div>
         </div>
-        <div className="col-md-3 mb-md-5">
-          <div className="card">
+        <div className="col-md-6 mb-md-5">
+          <div className="card shadow rounded">
             <div className="card-body">
               <h5 className="card-title">
                 <FontAwesomeIcon
@@ -62,8 +62,8 @@ function Card() {
             </div>
           </div>
         </div>
-        <div className="col-md-3 mb-md-5">
-          <div className="card">
+        <div className="col-md-6 mb-md-5">
+          <div className="card shadow rounded">
             <div className="card-body">
               <h5 className="card-title">
                 <FontAwesomeIcon

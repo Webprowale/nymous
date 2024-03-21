@@ -1,23 +1,26 @@
 import React from "react";
-import { app, auth } from "../firabaseConfig";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { app } from "../firabaseConfig";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 
-export const LoginAuth= async(email, password)=>{
+const auth = getAuth(app);
+
+export const loginAuth= async(email, password)=>{
     try{
-        let response = await signInWithEmailAndPassword(auth, email, password);
+     var response = await signInWithEmailAndPassword(auth, email, password)
+     return response;
+    }catch(error){
+        return error;
+    }
+    
+}
+
+export const registerAuth = async(email, password)=>{
+    try{
+        var response = await createUserWithEmailAndPassword(auth, email, password)
         return response;
     }
-    catch(err){
-        return err;
+    catch(error){
+        return error;
     }
 }
 
-export const RegisterAuth = async(email, password)=>{
-    try{
-        let response = await createUserWithEmailAndPassword(auth, email, password)
-        return response;
-    }
-    catch(err){
-        return err;
-    }
-}

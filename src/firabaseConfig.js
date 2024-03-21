@@ -1,17 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDLgSRF4JvAVgMzPlGvh3aPOJzeWyL2b5Q",
-  authDomain: "nymous-ea56a.firebaseapp.com",
-  projectId: "nymous-ea56a",
-  storageBucket: "nymous-ea56a.appspot.com",
-  messagingSenderId: "243238322842",
-  appId: "1:243238322842:web:60da38f35f59076c0ad523",
-  measurementId: "G-F5189ZGTQ7"
+  apiKey: "AIzaSyDhZ174TeliMqnh8VVTGZT4BQcyFM2DUbE",
+  authDomain: "robonymous-fdfa4.firebaseapp.com",
+  projectId: "robonymous-fdfa4",
+  storageBucket: "robonymous-fdfa4.appspot.com",
+  messagingSenderId: "685842117432",
+  appId: "1:685842117432:web:b7b0f235696f19915247cd"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const auth = getAuth(app);
-
-export { app, auth };
+ export const app = initializeApp(firebaseConfig);

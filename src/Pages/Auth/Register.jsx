@@ -1,80 +1,113 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
-import {  useFormik } from "formik";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
 import { validateUser } from "../../schemas";
-import {  RegisterAuth } from "../../API/Auth";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { registerAuth } from "../../API/Auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 function Register() {
-const navigate = useNavigate();
-const [loading, setloading] = useState("Register");
-
-  const onSubmit = async(values)=>{
-    try{
-     let res = await RegisterAuth(values.email, values.password);
-     console.log(res);
-      toast.success("Registration is succefully",{
-        onClose: ()=> navigate('/user')
+  const db = getFirestore();
+  const navigate = useNavigate();
+  const onSubmit = async (values) => {
+    try {
+      const res = await registerAuth(values.email, values.password);
+      console.log(res)
+      var ref = doc(db, "userAuth", res.user);
+      await setDoc(ref, {
+        username: values.username,
+        email: values.email,
       });
+      toast.success("Registration successful")
+    }catch (error) {
+      toast.error(error.message);
     }
-    catch(error){
-      toast.error("unknow error occur");
-    }
-  }
-  const {values, handleSubmit, handleChange, errors, touched, handleBlur, isSubmitting} = useFormik({
-    initialValues:{
-      email: " ",
-      password: " ",
+  };
+  const {
+    values,
+    handleChange,
+    handleSubmit,
+    handleBlur,
+    errors,
+    isSubmitting,
+    touched,
+  } = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
     },
     validationSchema: validateUser,
     onSubmit,
   });
- 
   return (
-    <div className="container-fluid hero login">
+    <div className="container-fluid hero login shadow rounded">
       <div className=" mx-auto formBody">
         <div className="text-center">
           <span className="fs-1 text-black">🧸</span>
           <h2 className="fw-bold  fs-2 fText mb-5">Register</h2>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3 inputBody px-3 mx-auto">
-            <span>
-              <FontAwesomeIcon icon={faUser} size="2xl" color="#C33764"/>
-            </span>
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              placeholder="i.e kelvin"
+              value={values.username}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            <label htmlFor="floatingInput">Username</label>
+            {errors.username && touched.username ? (
+              <small className="fw-semibold text-danger">
+                {errors.username}
+              </small>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="form-floating mb-3">
             <input
               type="email"
+              className="form-control"
               id="email"
+              placeholder="name@example.com"
               value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Enter Email Address"
-              className="ms-1"
             />
-            {errors.email && touched.email? <small className="text-danger">{errors.email}</small>: "" }
+            <label htmlFor="floatingInput">Email address</label>
+            {errors.email && touched.email ? (
+              <small className="fw-semibold text-danger">{errors.email}</small>
+            ) : (
+              ""
+            )}
           </div>
-          <div className="inputBody  ps-3 mx-auto">
-            <span>
-              <FontAwesomeIcon icon={faLock} size="2xl" color="#C33764" />
-            </span>
+          <div className="form-floating">
             <input
               type="password"
+              className="form-control"
               id="password"
-              placeholder="Enter Password"
+              placeholder="Password"
               value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {errors.password && touched.password ? <small className="text-danger">{errors.password}</small>: ""}
+            <label htmlFor="floatingPassword">Password</label>
+            {errors.password && touched.password ? (
+              <small className="fw-semibold text-danger">
+                {errors.password}
+              </small>
+            ) : (
+              ""
+            )}
           </div>
           <button
-          disabled={isSubmitting}
             type="submit"
-            className="formBtn hero text-white px-5 py-2 rounded-pill w-100"
+            className="formBtn hero text-white px-5 py-1 rounded-pill w-100 my-3"
+            disabled={isSubmitting}
           >
-            {loading}
+            Register
           </button>
         </form>
         <p className="fw-bold text-center mt-2">
