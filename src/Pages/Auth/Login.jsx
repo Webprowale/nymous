@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { app } from "../../firabaseConfig";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -10,7 +11,7 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom/dist";
 
 function Login() {
-  const db = getFirestore()
+  const db = getFirestore(app)
   const navigate = useNavigate()
   const onSubmit = async(values)=>{
     try{

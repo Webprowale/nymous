@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { app } from "../../firabaseConfig";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { validateUser } from "../../schemas";
 import { register } from "../../API/Auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+
 function Register() {
-  const db = getFirestore()
+  const db = getFirestore(app)
   const navigate = useNavigate()
     const onSubmit = async (values)=>{
         try{

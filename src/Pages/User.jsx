@@ -1,24 +1,30 @@
 import React from 'react'
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom/dist';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
-function User() {
-  const navigate = useNavigate();
-  const db = getFirestore()
-  const userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-  useEffect(()=>{
-     if(!userInfo && userInfo > 0){
-       navigate("/login")
-     }
-  })
+function User() {
+    const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const userInfoData = JSON.parse(sessionStorage.getItem('user-info'));
+    if (!userInfoData) {
+      navigate('/login');
+    } else {
+      setUserInfo(userInfoData);
+    }
+  }, [navigate]);
+
+  if (!userInfo) {
+    return null; 
+  }
+
   return (
     <div className="container-fluid hero login">
     <div className=" mx-auto formBody">
       <div className="text-center">
       <h2 className="fw-bold  fs-2 fText">{userInfo.username} Profile</h2>
-      <Link className='mb-3 shareLink'>https://robonymous.netlify.app/{userInfo.username}</Link>
+      <Link className='mb-3 shareLink'>https://robonymous.netlify.app/{userInfo.id}</Link>
       <p className="mb-5 fw-semibold">
       Share your profile link ❤️ to get responses from your friend. Go to "View Messages" to check out the responses. 👌
       </p>
