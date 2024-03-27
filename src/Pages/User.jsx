@@ -1,12 +1,24 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom/dist';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 function User() {
+  const navigate = useNavigate();
+  const db = getFirestore()
+  const userInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+  useEffect(()=>{
+     if(!userInfo && userInfo > 0){
+       navigate("/login")
+     }
+  })
   return (
     <div className="container-fluid hero login">
     <div className=" mx-auto formBody">
       <div className="text-center">
-      <h2 className="fw-bold  fs-2 fText">Webprowale Profile</h2>
-      <Link className='mb-3 shareLink fw-semibold'>https://robonymous.netlify.app/webprowale </Link>
+      <h2 className="fw-bold  fs-2 fText">{userInfo.username} Profile</h2>
+      <Link className='mb-3 shareLink'>https://robonymous.netlify.app/{userInfo.username}</Link>
       <p className="mb-5 fw-semibold">
       Share your profile link ❤️ to get responses from your friend. Go to "View Messages" to check out the responses. 👌
       </p>

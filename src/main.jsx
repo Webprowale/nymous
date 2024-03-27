@@ -5,6 +5,7 @@ import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
+import { app } from "./firabaseConfig.js";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>

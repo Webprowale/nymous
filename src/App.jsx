@@ -7,6 +7,9 @@ import Login from './Pages/Auth/Login'
 import User from './Pages/User'
 import {  ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { app } from './firabaseConfig'
+
+
 
 function App() {
   
