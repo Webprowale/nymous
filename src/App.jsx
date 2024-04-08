@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { app } from './firabaseConfig'
 import './App.css'
 import Home from './Pages/Home'
@@ -15,7 +15,6 @@ import ViewMsg from './Pages/ViewMsg'
 
 function App() {
   
-
   return (
     <>
        <ToastContainer />

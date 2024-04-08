@@ -25,7 +25,7 @@ function Login() {
             username: docSnap.data().username,
           }))
         }
-        toast.success("Login Successfull",{
+        toast.success("Logged In Successfully!",{
           onClose:()=> navigate("/user")
         })
     }

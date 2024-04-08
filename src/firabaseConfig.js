@@ -1,13 +1,16 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDhZ174TeliMqnh8VVTGZT4BQcyFM2DUbE",
-  authDomain: "robonymous-fdfa4.firebaseapp.com",
-  projectId: "robonymous-fdfa4",
-  storageBucket: "robonymous-fdfa4.appspot.com",
-  messagingSenderId: "685842117432",
-  appId: "1:685842117432:web:b7b0f235696f19915247cd"
+  apiKey: "AIzaSyCiUlD5FZA2CqQHgqH8mkMlZsNyGnU2FLc",
+  authDomain: "nymous-87b09.firebaseapp.com",
+  projectId: "nymous-87b09",
+  storageBucket: "nymous-87b09.appspot.com",
+  messagingSenderId: "764043082102",
+  appId: "1:764043082102:web:2c7eb6936e79e074f96257",
+  
 };
 
 // Initialize Firebase
+
  export const app = initializeApp(firebaseConfig);
+ 

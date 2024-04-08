@@ -19,7 +19,7 @@ function Register() {
             username: values.username,
             email: values.email,
           })
-          toast.success("registrationo suceefull",{
+          toast.success("registration successfully!",{
             onClose:()=> navigate("/login")
           })
         }
